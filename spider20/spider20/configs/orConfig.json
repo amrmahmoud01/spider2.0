@@ -1,0 +1,119 @@
+{
+  "t-shirt": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/t-shirts-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/shirts-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/shirts-blouses-women", "gender": "women"},
+      {"url": "https://or-egypt.com/pages/shop-the-look-men", "gender": "men"},
+      {"url": "https://or-egypt.com/pages/shop-the-look-women", "gender": "women"}
+    ]
+  },
+
+  "sweatshirt": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/sweatshirts-hoodies-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/sweatshirts-hoodies-women", "gender": "women"}
+    ]
+  },
+
+  "sweater": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/knitwear-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/knitwear-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/cardigans-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/pullovers-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/pullovers-women", "gender": "women"}
+    ]
+  },
+
+  "coat": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/jackets-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/jackets-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/denim-jackets-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/denim-jacket", "gender": "women"}
+    ]
+  },
+
+  "pants": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/pants-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/pants-women", "gender": "women"}
+    ]
+  },
+
+  "jeans": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/jeans-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/jeans-women", "gender": "women"}
+    ]
+  },
+
+  "leggings": {
+    "urls": []
+  },
+
+  "shorts": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/shorts-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/shorts-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/denim-shorts-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/swimwear", "gender": "men"}
+    ]
+  },
+
+  "dress": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/dresses", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/denim-dresses", "gender": "women"}
+    ]
+  },
+
+  "skirt": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/skirts", "gender": "women"}
+    ]
+  },
+
+  "pyjama": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/sets-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/beachwear-women", "gender": "women"}
+    ]
+  },
+
+  "underwear": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/socks-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/socks-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/belts-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/hats-women", "gender": "women"}
+    ]
+  },
+
+  "accessories": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/accessories-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/accessories-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/bags-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/bags-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/hats-women", "gender": "women"},
+      {"url": "https://or-egypt.com/collections/kimonos", "gender": "women"}
+    ]
+  },
+
+  "shoes": {
+    "urls": [
+      {"url": "https://or-egypt.com/collections/footwear-men", "gender": "men"},
+      {"url": "https://or-egypt.com/collections/footwear-women", "gender": "women"}
+    ]
+  },
+
+  "sportswear": {
+    "urls": []
+  },
+
+  "hoodie": {
+    "urls": []
+  }
+}

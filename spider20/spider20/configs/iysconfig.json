@@ -1,0 +1,105 @@
+{
+  "t-shirt": {
+    "urls": [
+      "https://inyourshoe.com/collections/t-shirts",
+      "https://inyourshoe.com/collections/pshirts",
+      "https://inyourshoe.com/collections/shirts",
+      "https://inyourshoe.com/collections/all-tops",
+      "https://inyourshoe.com/collections/tops-vests"
+    ]
+  },
+  
+  "sweatshirt": {
+    "urls": [
+      "https://inyourshoe.com/collections/jackets-sweaters",
+      "https://inyourshoe.com/collections/hoodies"
+    ]
+  },
+  
+  "sweater": {
+    "urls": [
+      "https://inyourshoe.com/collections/jackets-sweaters",
+      "https://inyourshoe.com/collections/knitwear"
+    ]
+  },
+  
+  "coat": {
+    "urls": [
+      "https://inyourshoe.com/collections/coats"
+    ]
+  },
+  
+  "pants": {
+    "urls": [
+      "https://inyourshoe.com/collections/pants"
+    ]
+  },
+  
+  "jeans": {
+    "urls": [
+      "https://inyourshoe.com/collections/jeans"
+    ]
+  },
+  
+  "leggings": {
+    "urls": [
+      "https://inyourshoe.com/collections/leggings"
+    ]
+  },
+  
+  "shorts": {
+    "urls": [
+      "https://inyourshoe.com/collections/shorts",
+      "https://inyourshoe.com/collections/swimmies",
+      "https://inyourshoe.com/collections/pshorts"
+    ]
+  },
+  
+  "dress": {
+    "urls": [
+      "https://inyourshoe.com/collections/all-dresses"
+    ]
+  },
+  
+  "skirt": {
+    "urls": [
+      "https://inyourshoe.com/collections/skirts"
+    ]
+  },
+  
+  "pyjama": {
+    "urls": [
+      "https://inyourshoe.com/collections/homewear",
+      "https://inyourshoe.com/collections/fluffy-pjoys",
+      "https://inyourshoe.com/collections/onesies",
+      "https://inyourshoe.com/collections/pjoys",
+      "https://inyourshoe.com/collections/robes"
+    ]
+  },
+  
+  "accessories": {
+    "urls": [
+      "https://inyourshoe.com/collections/all-accessories",
+      "https://inyourshoe.com/collections/headwear",
+      "https://inyourshoe.com/collections/all-socks",
+      "https://inyourshoe.com/collections/wallets",
+      "https://inyourshoe.com/collections/all-bags",
+      "https://inyourshoe.com/collections/candles",
+      "https://inyourshoe.com/collections/others"
+    ]
+  },
+  
+  "shoes": {
+    "urls": []
+  },
+  
+  "sportswear": {
+    "urls": []
+  },
+  
+  "hoodie": {
+    "urls": [
+      "https://inyourshoe.com/collections/hoodies"
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "t-shirt": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-t-shirts-t-348", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-t-shirts-t-345", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/women-tank-tops-t-5112", "gender": "women"}
+    ]
+  },
+
+  "sweatshirt": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-sweatshirts-t-303", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-sweatshirts-t-300", "gender": "men"}
+    ]
+  },
+
+  "sweater": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-sweaters-t-202", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/women-cardigans-t-186", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-sweaters-t-199", "gender": "men"}
+    ]
+  },
+
+  "coat": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-coats-t-1008", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-coats-t-1005", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/women-trench-coats-t-1929", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/women-raincoats-t-1927", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-raincoats-t-2037", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/women-overcoats-t-5199", "gender": "women"}
+    ]
+  },
+
+  "pants": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-trousers-t-263", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-trousers-t-260", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/men-chino-trousers-t-123", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/women-sweatpants-t-3528", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-sweatpants-t-3527", "gender": "men"}
+    ]
+  },
+
+  "jeans": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-jeans-t-196", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-jeans-t-194", "gender": "men"}
+    ]
+  },
+
+  "leggings": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-leggings-t-334", "gender": "women"}
+    ]
+  },
+
+  "shorts": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/men-shorts-t-316", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/men-swimming-shorts-t-1687", "gender": "men"}
+    ]
+  },
+
+  "dress": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-dresses-t-149", "gender": "women"}
+    ]
+  },
+
+  "skirt": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-skirts-t-161", "gender": "women"}
+    ]
+  },
+
+  "pyjama": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-loungewear-sleepwear-t-7009", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/women-pyjamas-t-269", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/women-nightdress-t-2054", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-pyjamas-t-266", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/men-underwear-sleepwear-t-50", "gender": "men"}
+    ]
+  },
+
+  "underwear": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-underwear-t-6983", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/women-bra-t-7015", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-boxer-trunks-t-2065", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/men-socks-t-136", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/women-socks-tights-t-139", "gender": "women"}
+    ]
+  },
+
+  "accessories": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-accessories-t-26", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-accessories-t-25", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/women-bags-wallets-t-126", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-bags-wallets-t-114", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/winter-accessories-u-300093", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-winter-accessories-t-93", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/women-jewellery-hair-accessories-t-325", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-belts-t-237", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/men-hats-t-306", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/women-fragrances-t-3726", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-fragrances-t-3731", "gender": "men"}
+    ]
+  },
+
+  "shoes": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-shoes-t-33", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/women-boots-t-117", "gender": "women"},
+      {"url": "https://www.lcwaikiki.eg/en/men-shoes-t-32", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/men-boots-t-111", "gender": "men"},
+      {"url": "https://www.lcwaikiki.eg/en/men-classic-shoes-t-242", "gender": "men"}
+    ]
+  },
+
+  "sportswear": {
+    "urls": [
+      {"url": "https://www.lcwaikiki.eg/en/women-sportswear-t-297", "gender": "women"}
+    ]
+  },
+
+  "hoodie": {
+    "urls": []
+  }
+}
