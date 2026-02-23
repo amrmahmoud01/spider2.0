@@ -24,7 +24,7 @@ class OrSpider(scrapy.Spider):
                 }
     item = SpiderItem()
     def start_requests(self):
-        with open("configs/orConfig.json") as f:
+        with open("configs/orTestConfig.json") as f:
             self.config=json.load(f)
 
         for category, info in self.config.items():

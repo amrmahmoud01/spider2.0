@@ -1,0 +1,14 @@
+{
+  "shoes": {
+    "urls": [
+      {
+        "url": "https://or-egypt.com/collections/footwear-men",
+        "gender": "men"
+      },
+      {
+        "url": "https://or-egypt.com/collections/footwear-women",
+        "gender": "women"
+      }
+    ]
+  }
+}

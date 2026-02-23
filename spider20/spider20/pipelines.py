@@ -3,7 +3,7 @@
 from itemadapter import ItemAdapter
 from dotenv import load_dotenv
 import os
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.dialects.mysql import insert
@@ -12,7 +12,11 @@ from spider20.models.models import Product, Productimages, Productcolors
 
 class SpiderPipeline:
     def __init__(self, batch_size=100):
+
+
         load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '..', '.env'))
+
+
 
         self.batch_size = batch_size
         self.items_buffer = []
@@ -21,6 +25,12 @@ class SpiderPipeline:
             f"{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}",
             echo=False
         )
+        try:
+            with self.engine.connect() as conn:
+                result = conn.execute((text("SELECT 1")))
+                print("✅ DB connection successful:", result.fetchone())
+        except Exception as e:
+            print("❌ DB connection failed:", e)
         self.session = None
         # Keep in-memory cache of product-color pairs to avoid duplicates in one run
         self.existing_colors_cache = set()

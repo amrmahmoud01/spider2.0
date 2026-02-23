@@ -46,7 +46,6 @@ class Product(Base):
     productId: Mapped[int] = mapped_column(Integer, primary_key=True)
     price: Mapped[Optional[decimal.Decimal]] = mapped_column(DECIMAL(10, 2))
     type: Mapped[Optional[str]] = mapped_column(String(90))
-    color: Mapped[Optional[str]] = mapped_column(String(90))
     productLink: Mapped[Optional[str]] = mapped_column(String(2083))
     name: Mapped[Optional[str]] = mapped_column(String(90))
     storeId: Mapped[Optional[int]] = mapped_column(Integer)
