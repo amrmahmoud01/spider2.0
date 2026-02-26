@@ -53,16 +53,16 @@ class OrSpider(scrapy.Spider):
                     "category_name": category_name,
                     "gender": gender
                 }
-                )
-        next_page = response.css(".pagination__item--prev ::attr(href)").get()
-        if next_page:
-            yield scrapy.Request(
-                url = response.urljoin(next_page), 
-                callback=self.parse,
-                cb_kwargs={
-                    "category_name": category_name,
-                    "gender": gender
-                })
+        #         )
+        # next_page = response.css(".pagination__item--prev ::attr(href)").get()
+        # if next_page:
+        #     yield scrapy.Request(
+        #         url = response.urljoin(next_page), 
+        #         callback=self.parse,
+        #         cb_kwargs={
+        #             "category_name": category_name,
+        #             "gender": gender
+        #         })
             
 
     
