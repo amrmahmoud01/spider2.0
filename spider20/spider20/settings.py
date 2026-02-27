@@ -7,6 +7,19 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DB_PORT = os.getenv('DB_PORT') 
+DB_HOST = os.getenv('DB_HOST')
+DB_USER = os.getenv('DB_USER')
+DB_PASS = os.getenv('DB_PASS')
+DB_NAME = os.getenv('DB_NAME')
+SCRAPEOPS_API_KEY = os.getenv('SCRAPEOPS_API_KEY')
+
+
 BOT_NAME = "spider20"
 
 SPIDER_MODULES = ["spider20.spiders"]

@@ -11,18 +11,18 @@ from scrapy.pipelines.images import ImagesPipeline
 from spider20.models.models import Product, Productimages, Productcolors
 
 class SpiderPipeline:
-    def __init__(self, batch_size=100):
+    def __init__(self, db_url, batch_size=100):
 
 
-        load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '..', '.env'))
-
-
+        # load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '..', '.env'))
+        self.db_url = db_url
 
         self.batch_size = batch_size
         self.items_buffer = []
         self.engine = create_engine(
-            f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@"
-            f"{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}",
+            # f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@"
+            # f"{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}",
+            db_url,
             echo=False
         )
         try:
@@ -35,6 +35,20 @@ class SpiderPipeline:
         # Keep in-memory cache of product-color pairs to avoid duplicates in one run
         self.existing_colors_cache = set()
 
+    @classmethod
+    def from_crawler(cls, crawler):
+        # Pull from settings.py instead of os.getenv directly
+        settings = crawler.settings
+        user = settings.get('DB_USER')
+        password = settings.get('DB_PASS')
+        host = settings.get('DB_HOST')
+        port = settings.get('DB_PORT')
+        db = settings.get('DB_NAME')
+        
+        # Build the URL safely
+        db_url = f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}"
+        return cls(db_url)
+    
     def open_spider(self, spider):
         print("🚀 SpiderPipeline INITIALIZED")
         self.session = Session(self.engine)
