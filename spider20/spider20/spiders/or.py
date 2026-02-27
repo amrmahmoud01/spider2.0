@@ -1,6 +1,7 @@
 import scrapy
 import re
 import json
+import os
 from spider20.items import SpiderItem
 
 # from spider20.spider20.items import SpiderItem 
@@ -24,7 +25,17 @@ class OrSpider(scrapy.Spider):
                 }
     item = SpiderItem()
     def start_requests(self):
-        with open("configs/orTestConfig.json") as f:
+
+
+        spider_dir = os.path.dirname(os.path.abspath(__file__))
+
+        config_path = os.path.join(spider_dir, '..', 'configs', 'orTestConfig.json')
+    
+        # Normalized path to make it clean
+        config_path = os.path.normpath(config_path)
+
+
+        with open(config_path) as f:
             self.config=json.load(f)
 
         for category, info in self.config.items():
