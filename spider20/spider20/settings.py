@@ -25,6 +25,10 @@ BOT_NAME = "spider20"
 SPIDER_MODULES = ["spider20.spiders"]
 NEWSPIDER_MODULE = "spider20.spiders"
 
+EXTENSIONS = {
+    'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500,
+}
+
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
