@@ -29,7 +29,7 @@ class IysSpider(scrapy.Spider):
 
         spider_dir = os.path.dirname(os.path.abspath(__file__))
 
-        config_path = os.path.join(spider_dir, '..', 'configs', 'iysConfig.json')
+        config_path = os.path.join(spider_dir, '..', 'configs', 'iysconfig.json')
     
         # Normalized path to make it clean
         config_path = os.path.normpath(config_path)
