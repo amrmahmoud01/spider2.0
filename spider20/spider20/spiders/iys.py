@@ -38,7 +38,6 @@ class IysSpider(scrapy.Spider):
         with open(config_path) as f:
             self.config=json.load(f)
 
-            self.config=json.load(f)
 
         for category, info in self.config.items():
             urls = info["urls"]
