@@ -1,6 +1,7 @@
 import scrapy
 import re
 import json
+import os
 from spider20.items import SpiderItem
 from scrapy_playwright.page import PageMethod
 from urllib.parse import urlparse, urlunparse
@@ -19,9 +20,20 @@ class LCSpider(scrapy.Spider):
     }
 
     def start_requests(self):
+
+        spider_dir = os.path.dirname(os.path.abspath(__file__))
+
+        config_path = os.path.join(spider_dir, '..', 'configs', 'lcConfig.json')
+    
+        # Normalized path to make it clean
+        config_path = os.path.normpath(config_path)
+
+
+        
+
         print("PIPELINES:", self.settings.get("ITEM_PIPELINES"))
-        with open("configs/lcConfig.json") as f:
-            self.config = json.load(f)
+        with open(config_path) as f:
+            self.config=json.load(f)
 
         for category, info in self.config.items():
             for url in info["urls"]:

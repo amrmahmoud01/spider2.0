@@ -29,7 +29,7 @@ class OrSpider(scrapy.Spider):
 
         spider_dir = os.path.dirname(os.path.abspath(__file__))
 
-        config_path = os.path.join(spider_dir, '..', 'configs', 'orTestConfig.json')
+        config_path = os.path.join(spider_dir, '..', 'configs', 'orConfig.json')
     
         # Normalized path to make it clean
         config_path = os.path.normpath(config_path)
