@@ -71,7 +71,7 @@ class SpiderPipeline:
 
                 existing_image_urls = {img.URL for img in existing.productimages}
                 if item["imageLink"] and item["imageLink"] not in existing_image_urls:
-                    existing.productimages.append(Productimages(URL=item["imageLink"]))
+                    existing.productimages = [Productimages(URL=item["imageLink"])]
 
                 # # Update image if new
                 # if item["imageLink"]:
