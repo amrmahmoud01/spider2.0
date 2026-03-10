@@ -73,9 +73,9 @@ class SpiderPipeline:
                 if item["imageLink"] and item["imageLink"] not in existing_image_urls:
                     existing.productimages.append(Productimages(URL=item["imageLink"]))
 
-                # Update image if new
-                if item["imageLink"]:
-                    existing.productimages.append(Productimages(URL=item["imageLink"]))
+                # # Update image if new
+                # if item["imageLink"]:
+                #     existing.productimages.append(Productimages(URL=item["imageLink"]))
 
                 # Prepare colors to insert
                 colors_to_add = []
