@@ -2,6 +2,7 @@ import scrapy
 import re
 import json
 import os
+import scrapy_zyte_api
 from spider20.items import SpiderItem
 from scrapy_playwright.page import PageMethod
 from urllib.parse import urlparse, urlunparse
@@ -21,12 +22,11 @@ class LCSpider(scrapy.Spider):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
                 "Accept-Language": "en-US,en;q=0.9",
             },
-        "DOWNLOADER_MIDDLEWARES": {
-            'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725,    
-            },
-        # Turn the proxy on
-        "SCRAPEOPS_PROXY_ENABLED": True
-                        }
+        "ADDONS": {
+            scrapy_zyte_api.Addon: 500,
+        }
+                }
+        
 
     def start_requests(self):
 
