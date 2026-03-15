@@ -35,24 +35,13 @@ ZYTE_API_KEY = os.getenv('ZYTE_API_KEY')
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
-# custom_settings = {
-#     "PLAYWRIGHT_LAUNCH_OPTIONS": {"headless": False},  # for debugging
-#     "PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT": 30000,
-#     "PLAYWRIGHT_CONTEXTS": {
-#         "default": {
-#             "user_agent": "your-user-agent",
-#             "viewport": {"width": 1280, "height": 800},
-#         }
-#     }
-# }
-
 
 ADDONS = {}
 
-# DOWNLOAD_HANDLERS = {
-#     "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
-#     "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
-# }
+DOWNLOAD_HANDLERS = {
+    "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+}
 
 PLAYWRIGHT_LAUNCH_OPTIONS = {
     "headless": False,

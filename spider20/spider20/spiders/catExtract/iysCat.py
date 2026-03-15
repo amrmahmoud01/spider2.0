@@ -34,7 +34,6 @@ class IYSCategoryExtractor(scrapy.Spider):
             text = item.css(".submenu__link-text::text").get().strip()
             yield{text: link}
         page = response.meta.get("playwright_page")
-        await page.screenshot(path="example.png", full_page=True)
         await page.close()
 
     async def errback(self, failure):

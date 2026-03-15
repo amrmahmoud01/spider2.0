@@ -1,0 +1,148 @@
+{
+  "t-shirt": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/man-t-shirt", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-new-season?filter=category:t-shirt", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-new-season?filter=category:shirts", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:shirts", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:t-shirt", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-studio?filter=category:shirts", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-studio?filter=category:t-shirt,polo-t-shirts", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:t-shirt", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:shirt", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:tunics", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:shirt", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:tunics", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:t-shirt", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/modest-tunic", "gender": "women"}
+    ]
+  },
+
+  "sweatshirt": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/man-new-season?filter=category:sweatpants,sweatshirts", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:sweatpants,sweatshirts", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:sweatpants,sweatshirt", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:sweatpants,sweatshirt", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/modest-sweatshirt", "gender": "women"}
+    ]
+  },
+
+  "sweater": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/man-new-season?filter=category:cardigans", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:pullovers", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:cardigans", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:pullover", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:cardigans,pullover", "gender": "women"}
+    ]
+  },
+
+  "coat": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/man-new-season?filter=category:blazer-jackets", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-new-season?filter=category:coats,denim-jacket,jackets,leather-jackets,outerwear,pu-mont", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:coats,denim-jacket,jackets,leather-jackets,pu-mont", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:blazer-jackets", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-studio?filter=category:coats,jackets,vests", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-blazer-jackets", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:blazer-jacket", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:cachet,coat,jacket,leather-jacket,pu-mont,raincoat,trenchcoat", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:coat,jacket,raincoat,vest", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:blazer-jacket", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/modest-jacket ", "gender": "women"}
+    ]
+  },
+
+  "pants": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/man-new-season?filter=category:trousers", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:trousers", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-studio?filter=category:trousers", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:trousers", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:trousers", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/modest-trousers", "gender": "women"}
+    ]
+  },
+
+  "jeans": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/man-new-season?filter=category:jean-trousers", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:jean-trousers", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:jeans", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:denim-clothes,jeans", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-denim-clothes", "gender": "women"}
+    ]
+  },
+
+  "leggings": {
+    "urls": []
+  },
+
+  "shorts": {
+    "urls": []
+  },
+
+  "dress": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:dress", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:dress", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/modest-dress", "gender": "women"}
+    ]
+  },
+
+  "skirt": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:skirt", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:skirt", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/modest-skirt", "gender": "women"}
+    ]
+  },
+
+  "pyjama": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/man-homewear", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-homewear", "gender": "women"}
+    ]
+  },
+
+  "underwear": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:boxer,home-slippers,homewear,homewear-bottom,homewear-set,homewear-top,underwear,underwear-top", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-underwear", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/homewear-and-underwear?filter=gender:woman", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:homewear,homewear-set,underwear", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-underwear", "gender": "women"}
+    ]
+  },
+
+  "accessories": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/man-accessories", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-new-season?filter=category:belt,bobby-socks,hats,perfume,socks", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:man;category:backpack,bags,belt,bobby-socks,scarf,socks,wallets,wristlet", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/man-belt", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-new-season?filter=category:bags,belt,bobby-socks,bracelet,earring,hair-accessories,hat,jewellery,keychains,necklace,perfume,shawl,socks,wallets", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:perfume", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/big-sale?filter=gender:woman;category:backpack,bags,baggage,beret,bobby-socks,bracelet,earring,hair-accessories,hat,jewellery,necklace,other-accessories,perfume,ring,scarf,shawl,socks,girls-and-teens-stationeries,sunglasses,wallets", "gender": "women"},
+      {"url": "https://www.defacto.com.eg/en-eg/woman-shawl", "gender": "women"}
+    ]
+  },
+
+  "shoes": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/woman-home-slippers", "gender": "women"}
+    ]
+  },
+
+  "sportswear": {
+    "urls": [
+      {"url": "https://www.defacto.com.eg/en-eg/defacto-fit-man", "gender": "men"},
+      {"url": "https://www.defacto.com.eg/en-eg/defacto-fit-woman", "gender": "women"}
+    ]
+  },
+
+  "hoodie": {
+    "urls": []
+  }
+}

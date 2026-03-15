@@ -16,7 +16,7 @@ class LCSpider(scrapy.Spider):
         },
         "CONCURRENT_REQUESTS": 4,
         "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
-        "DOWNLOAD_DELAY": 0.5,
+        "DOWNLOAD_DELAY": 0.5, 
         "RANDOMIZE_DOWNLOAD_DELAY": True,
         "DEFAULT_REQUEST_HEADERS": {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
@@ -59,8 +59,6 @@ class LCSpider(scrapy.Spider):
         for product in products:
             link = response.urljoin(product.css("a::attr(href)").get())
 
-            # 🟩 Use Playwright only on product pages
-            print("Discounted Price::::",product.css(".product-price__badge").get())
             if(product.css(".product-price__badge").get() is not None):
                 yield scrapy.Request(
                 url=link,
@@ -92,8 +90,6 @@ class LCSpider(scrapy.Spider):
 
         print("Parsing product")
         salePrice = re.sub(r"[^\d.]", "", salePrice)
-
-        print("SALE PRICE:::",salePrice)
 
         item = SpiderItem()
         item["imageLink"] = response.css(".main-image::attr(src)").get()
