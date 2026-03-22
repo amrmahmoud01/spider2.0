@@ -10,22 +10,22 @@ from urllib.parse import urlparse, urlunparse
 class LCSpider(scrapy.Spider):
     name = "lc"
 
-    # custom_settings = {
-    #     "ITEM_PIPELINES": {
-    #         "spider20.pipelines.SpiderPipeline": 300,
-    #     },
-    #     "CONCURRENT_REQUESTS": 4,
-    #     "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
-    #     "DOWNLOAD_DELAY": 0.5, 
-    #     "RANDOMIZE_DOWNLOAD_DELAY": True,
-    #     "DEFAULT_REQUEST_HEADERS": {
-    #         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
-    #             "Accept-Language": "en-US,en;q=0.9",
-    #         },
-    #     "ADDONS": {
-    #         scrapy_zyte_api.Addon: 500,
-    #     }
-    #             }
+    custom_settings = {
+        "ITEM_PIPELINES": {
+            "spider20.pipelines.SpiderPipeline": 300,
+        },
+        "CONCURRENT_REQUESTS": 4,
+        "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
+        "DOWNLOAD_DELAY": 0.5, 
+        "RANDOMIZE_DOWNLOAD_DELAY": True,
+        "DEFAULT_REQUEST_HEADERS": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+                "Accept-Language": "en-US,en;q=0.9",
+            },
+        "ADDONS": {
+            scrapy_zyte_api.Addon: 500,
+        }
+                }
         
 
     def start_requests(self):
