@@ -99,5 +99,6 @@ class OrSpider(scrapy.Spider):
         item["gender"] = gender
         item["type"] = category_name
         item["storeId"] = 1003
+        item["colors"] = response.css("variant-selects>:first-child input::attr(value)").getall()
 
         yield item

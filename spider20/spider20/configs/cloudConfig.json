@@ -1,10 +1,22 @@
 {
-  "t-shirt": {
+  "women": {
     "urls": [
-      {
-        "url": "https://cloud-clothing.co/collections/shop-all-kids-new",
-        "gender": "men"
-      }
+      "https://cloud-clothing.co/collections/shop-all-women",
+      "https://cloud-clothing.co/collections/women-s-denim-new",
+      "https://cloud-clothing.co/collections/cloud-move",
+      "https://cloud-clothing.co/collections/cloud-sleep",
+      "https://cloud-clothing.co/collections/yoga-pants-new",
+      "https://cloud-clothing.co/collections/womens-tops-new",
+      "https://cloud-clothing.co/collections/women-sweatsets-new"
+    ]
+  },
+  "men": {
+    "urls": [
+      "https://cloud-clothing.co/collections/shop-all-men",
+      "https://cloud-clothing.co/collections/men-sweatsets",
+      "https://cloud-clothing.co/collections/mens-basics",
+      "https://cloud-clothing.co/collections/sweatpants-new",
+      "https://cloud-clothing.co/collections/mens-denim"
     ]
   }
 }

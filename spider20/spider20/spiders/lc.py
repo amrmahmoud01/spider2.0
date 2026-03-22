@@ -10,22 +10,22 @@ from urllib.parse import urlparse, urlunparse
 class LCSpider(scrapy.Spider):
     name = "lc"
 
-    custom_settings = {
-        "ITEM_PIPELINES": {
-            "spider20.pipelines.SpiderPipeline": 300,
-        },
-        "CONCURRENT_REQUESTS": 4,
-        "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
-        "DOWNLOAD_DELAY": 0.5, 
-        "RANDOMIZE_DOWNLOAD_DELAY": True,
-        "DEFAULT_REQUEST_HEADERS": {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
-                "Accept-Language": "en-US,en;q=0.9",
-            },
-        "ADDONS": {
-            scrapy_zyte_api.Addon: 500,
-        }
-                }
+    # custom_settings = {
+    #     "ITEM_PIPELINES": {
+    #         "spider20.pipelines.SpiderPipeline": 300,
+    #     },
+    #     "CONCURRENT_REQUESTS": 4,
+    #     "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
+    #     "DOWNLOAD_DELAY": 0.5, 
+    #     "RANDOMIZE_DOWNLOAD_DELAY": True,
+    #     "DEFAULT_REQUEST_HEADERS": {
+    #         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+    #             "Accept-Language": "en-US,en;q=0.9",
+    #         },
+    #     "ADDONS": {
+    #         scrapy_zyte_api.Addon: 500,
+    #     }
+    #             }
         
 
     def start_requests(self):
@@ -91,9 +91,15 @@ class LCSpider(scrapy.Spider):
         print("Parsing product")
         salePrice = re.sub(r"[^\d.]", "", salePrice)
 
+        script = response.xpath('//script[contains(text(), "GA4ViewItemEvent")]/text()').get()
+        json_str = re.search(r'JSON\.parse\("(.*?)"\)', script).group(1)
+        data = json.loads(json_str.replace('\\"', '"'))
+        item_details = data['ecommerce']['items'][0]
+        name = item_details.get('item_name')
+
         item = SpiderItem()
         item["imageLink"] = response.css(".main-image::attr(src)").get()
-        item["name"] = response.css(".product-detail__title::text").getall()[1].strip()
+        item["name"] = name
         item["price"] = re.sub(r"[^\d.]", "", response.css(".current-price::text").get())
         item["salePrice"] = salePrice
         item["productLink"] = response.url

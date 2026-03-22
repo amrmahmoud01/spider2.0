@@ -1,5 +1,10 @@
 {
-  "coat": {
-    "urls": ["https://inyourshoe.com/collections/t-shirts"]
+  "Hoodies": {
+    "urls": [
+      {
+        "url": "https://inyourshoe.com/collections/hoodies",
+        "gender": "Unisex"
+      }
+    ]
   }
 }

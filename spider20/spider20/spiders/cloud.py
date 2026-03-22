@@ -2,6 +2,7 @@ import scrapy
 import re
 import json
 import os
+from ..mapping import classify_product
 from spider20.items import SpiderItem
 
 # from spider20.spider20.items import SpiderItem 
@@ -34,25 +35,29 @@ class CloudSpider(scrapy.Spider):
         # Normalized path to make it clean
         config_path = os.path.normpath(config_path)
 
-
         with open(config_path) as f:
-            self.config=json.load(f)
+            self.config = json.load(f)
 
-        for category, info in self.config.items():
-            urls = info["urls"]
+        # Iterate through the gender keys: "women", "men", "kids"
+        for gender, info in self.config.items():
+            urls = info.get("urls", [])
             for url in urls:
-                yield scrapy.Request(url = url["url"],
-                                callback=self.parse,
-                                cb_kwargs={"category_name": category,
-                                           "gender": url["gender"]}
-                                )
+                yield scrapy.Request(
+                    url=url,
+                    callback=self.parse,
+                    # We no longer pass "category_name" here because 
+                    # we will infer it from the product title in parse_product
+                    cb_kwargs={
+                        "gender": gender
+                    }
+                )
 
         
         
         
 
 
-    def parse(self, response, category_name, gender):
+    def parse(self, response, gender):
         products = response.css(".product-card")
         for product in products:
             
@@ -61,7 +66,6 @@ class CloudSpider(scrapy.Spider):
                 url = link,
                 callback = self.parse_product,
                 cb_kwargs={
-                    "category_name": category_name,
                     "gender": gender
                 }
                 )
@@ -71,13 +75,13 @@ class CloudSpider(scrapy.Spider):
                 url = response.urljoin(next_page), 
                 callback=self.parse,
                 cb_kwargs={
-                    "category_name": category_name,
+                    # "category_name": category_name,
                     "gender": gender
                 })
             
 
     
-    def parse_product(self,response, category_name, gender):
+    def parse_product(self,response, gender):
         salePrice = 0
 
         
@@ -93,13 +97,16 @@ class CloudSpider(scrapy.Spider):
 
         item = SpiderItem()
 
+        #TODO unify colors or figure it out
+
         item["imageLink"]= "https:" + response.css(".product-gallery__media img::attr(src)").get()
         item["name"] = response.css(".product-info__title::text").get().strip()
-        item["price"] = re.sub(r"[^\d.]", "", response.css("compare-at-price ::text").getall()[-1].strip())
+        item["price"] = re.sub(r"[^\d.]", "", response.css("compare-at-price ::text").getall()[-1].strip()) 
         item["salePrice"] = salePrice
         item["productLink"] = response.url
         item["gender"] = gender
-        item["type"] = category_name
+        item["type"] = classify_product(item["name"])
         item["storeId"] = 1004
+        item['colors'] = response.css('.color-swatch span::text').getall()
 
         yield item
