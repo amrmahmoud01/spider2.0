@@ -78,13 +78,17 @@ class LCSpider(scrapy.Spider):
         base_url = urlunparse((parsed.scheme, parsed.netloc, parsed.path, '', '', ''))
 
         next_url = f"{base_url}?page={nextPage}"
-        if response.css(".load-more__button"):
-            nextPage += 1
-            yield scrapy.Request(
-                url=next_url,
-                callback=self.parse,
-                cb_kwargs={"category_name": category_name, "gender": gender, "nextPage": nextPage}
-            )
+        try:  
+            if response.css(".load-more__button").getall()[1]:
+                nextPage += 1
+                yield scrapy.Request(
+                    url=next_url,
+                    callback=self.parse,
+                    cb_kwargs={"category_name": category_name, "gender": gender, "nextPage": nextPage}
+                )
+        finally:
+            return
+
 
     def parse_product(self, response, category_name, gender, salePrice):
 
