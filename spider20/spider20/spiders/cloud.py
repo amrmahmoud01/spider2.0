@@ -85,23 +85,24 @@ class CloudSpider(scrapy.Spider):
         salePrice = 0
 
         
-        salePrice = re.sub(r"[^\d.]", "", response.css("sale-price ::text").getall()[-1].strip()) 
-        print("SaLE:", salePrice)
-        if float(salePrice) == 0: 
-            salePrice = 0
-            print("NO SALE")
-        else: 
-            print("SALE")
-            print(salePrice)
-            salePrice = re.sub(r"[^\d.]", "", response.css("sale-price ::text").getall()[-1].strip()) 
+        # salePrice = re.sub(r"[^\d.]", "", response.css("sale-price ::text").getall().strip()) 
+        # print("SaLE:", salePrice)
+        # if float(salePrice) == 0: 
+        #     salePrice = 0
+        #     print("NO SALE")
+        # else:
+        #     print("SALE")
+        #     print(salePrice)
+        #     salePrice = re.sub(r"[^\d.]", "", response.css("sale-price ::text").getall()[-1].strip()) 
+
+        #TODO When there's a sale add the logic
 
         item = SpiderItem()
 
-        #TODO unify colors or figure it out
 
         item["imageLink"]= "https:" + response.css(".product-gallery__media img::attr(src)").get()
         item["name"] = response.css(".product-info__title::text").get().strip()
-        item["price"] = re.sub(r"[^\d.]", "", response.css("compare-at-price ::text").getall()[-1].strip()) 
+        item["price"] = re.sub(r"[^\d.]", "", response.css("sale-price ::text").getall()[2].strip()) 
         item["salePrice"] = salePrice
         item["productLink"] = response.url
         item["gender"] = gender
