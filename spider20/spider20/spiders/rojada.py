@@ -79,21 +79,34 @@ class OrSpider(scrapy.Spider):
     
     def parse_product(self,response, category_name, gender):
 
+        onSale = len(response.css(".product-main bdi::text").getall())==2
+
+        if onSale:
+            
+            rawSalePrice = response.css(".product-main bdi::text").getall()[1]
+            rawSalePriceNoComma = rawSalePrice.replace(",",".")
+            salePrice = re.sub(r"[^\d.]", "", rawSalePriceNoComma)
+
+            rawPrice = response.css(".product-main bdi::text").getall()[0]
+            rawPriceNoComma = rawPrice.replace(",",".")
+            price = re.sub(r"[^\d.]", "", rawPriceNoComma)
+
+        else:
+
+            rawPrice = response.css(".product-main bdi::text").getall()[0]
+            rawPriceNoComma = rawPrice.replace(",",".")
+            price = re.sub(r"[^\d.]", "", rawPriceNoComma)
+
+            salePrice = 0 
         
-        salePrice = re.sub(r"[^\d.]", "", response.css(".price__sale .price-item--regular::text").get()) 
-        if float(salePrice) == 0: 
-            salePrice = 0
-            print("NO SALE")
-        else: 
-            print("SALE")
-            print(salePrice)
-            salePrice = re.sub(r"[^\d.]", "", response.css(".price__sale .price-item--sale::text").get()) 
+
+        
 
         item = SpiderItem()
 
-        item["imageLink"]= "https:" + response.css(".image-magnify-lightbox::attr(src)").get()
-        item["name"] = response.css(".product__title h1::text").get().strip()
-        item["price"] = re.sub(r"[^\d.]", "", response.css(".price-item--regular::text").get()) if salePrice==0 else re.sub(r"[^\d.]", "", response.css(".price__sale .price-item--regular::text").get())
+        item["imageLink"]= "https:" + response.css(".woocommerce-product-gallery__image img::attr(data-src)").get() 
+        item["name"] = response.css(".product-title ::text").get().strip()
+        item["price"] = price
         item["salePrice"] = salePrice
         item["productLink"] = response.url
         item["gender"] = gender

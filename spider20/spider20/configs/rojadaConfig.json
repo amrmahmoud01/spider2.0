@@ -1,0 +1,90 @@
+{
+  "t-shirt": {
+    "urls": [
+      {"url": "https://rojada-egy.com/product-category/shirts/", "gender": "women"},
+      {"url": "https://rojada-egy.com/product-category/blouses/", "gender": "women"},
+      {"url": "https://rojada-egy.com/product-category/t-shirts/", "gender": "women"},
+      {"url": "https://rojada-egy.com/product-category/body/", "gender": "women"}
+    ]
+  },
+
+  "sweatshirt": {
+    "urls": [
+      {"url": "https://rojada-egy.com/product-category/sweatshirts/", "gender": "women"}
+    ]
+  },
+
+  "sweater": {
+    "urls": [
+      {"url": "https://rojada-egy.com/product-category/knitwear/", "gender": "women"}
+    ]
+  },
+
+  "coat": {
+    "urls": [
+      {"url": "https://rojada-egy.com/product-category/blazers/", "gender": "women"},
+      {"url": "https://rojada-egy.com/product-category/jackets/", "gender": "women"},
+      {"url": "https://rojada-egy.com/product-category/gilet/", "gender": "women"},
+      {"url": "https://rojada-egy.com/product-category/poncho/", "gender": "women"}
+    ]
+  },
+
+  "pants": {
+    "urls": [
+      {"url": "https://rojada-egy.com/product-category/trousers/", "gender": "women"}
+    ]
+  },
+
+  "jeans": {
+    "urls": [
+      {"url": "https://rojada-egy.com/product-category/denim-i-jeans/", "gender": "women"}
+    ]
+  },
+
+  "leggings": {
+    "urls": []
+  },
+
+  "shorts": {
+    "urls": []
+  },
+
+  "dress": {
+    "urls": [
+      {"url": "https://rojada-egy.com/product-category/dresses/", "gender": "women"},
+      {"url": "https://rojada-egy.com/product-category/suits/", "gender": "women"}
+    ]
+  },
+
+  "skirt": {
+    "urls": [
+      {"url": "https://rojada-egy.com/product-category/skirts/", "gender": "women"}
+    ]
+  },
+
+  "pyjama": {
+    "urls": []
+  },
+
+  "underwear": {
+    "urls": []
+  },
+
+  "accessories": {
+    "urls": [
+      {"url": "https://rojada-egy.com/product-category/kimono/", "gender": "women"}
+    ]
+  },
+
+  "shoes": {
+    "urls": []
+  },
+
+  "sportswear": {
+    "urls": []
+  },
+
+  "hoodie": {
+    "urls": []
+  }
+}
