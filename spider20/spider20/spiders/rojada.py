@@ -84,17 +84,20 @@ class OrSpider(scrapy.Spider):
         if onSale:
             
             rawSalePrice = response.css(".product-main bdi::text").getall()[1]
-            rawSalePriceNoComma = rawSalePrice.replace(",",".")
+            rawSalePriceNoDot = rawSalePrice.replace(".","")
+            rawSalePriceNoComma = rawSalePriceNoDot.replace(",",".")
             salePrice = re.sub(r"[^\d.]", "", rawSalePriceNoComma)
 
             rawPrice = response.css(".product-main bdi::text").getall()[0]
-            rawPriceNoComma = rawPrice.replace(",",".")
+            rawPriceNoDot = rawPrice.replace(".","")
+            rawPriceNoComma = rawPriceNoDot.replace(",",".")
             price = re.sub(r"[^\d.]", "", rawPriceNoComma)
 
         else:
 
             rawPrice = response.css(".product-main bdi::text").getall()[0]
-            rawPriceNoComma = rawPrice.replace(",",".")
+            rawPriceNoDot = rawPrice.replace(".","")
+            rawPriceNoComma = rawPriceNoDot.replace(",",".")
             price = re.sub(r"[^\d.]", "", rawPriceNoComma)
 
             salePrice = 0 
@@ -111,6 +114,6 @@ class OrSpider(scrapy.Spider):
         item["productLink"] = response.url
         item["gender"] = gender
         item["type"] = category_name
-        item["storeId"] = 1003
+        item["storeId"] = 1005
 
         yield item
