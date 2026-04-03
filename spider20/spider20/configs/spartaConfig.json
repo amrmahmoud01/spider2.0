@@ -1,0 +1,34 @@
+{
+  "t-shirt": {
+    "urls": [
+      {
+        "url": "https://api.easy-orders.net/api/v1/products?limit=500&page=1&sort=position,desc&fields=id,name,thumb,price,sale_price,sale_end_date,slug,position,disable_orders_for_no_stock,quantity,is_free_shipping&category_id=7ab83f0e-214f-4752-9996-4e7ce0622149&join=Variations.Props",
+        "gender": "unisex"
+      }
+    ]
+  },
+  "sweatshirt": {
+    "urls": [
+      {
+        "url": "https://api.easy-orders.net/api/v1/products?limit=500&page=1&sort=position,desc&fields=id,name,thumb,price,sale_price,sale_end_date,slug,position,disable_orders_for_no_stock,quantity,is_free_shipping&category_id=ef31e8c9-9f2f-4416-a9bf-af47af43969e&join=Variations.Props",
+        "gender": "unisex"
+      }
+    ]
+  },
+  "pants": {
+    "urls": [
+      {
+        "url": "https://api.easy-orders.net/api/v1/products?limit=500&page=1&sort=position,desc&fields=id,name,thumb,price,sale_price,sale_end_date,slug,position,disable_orders_for_no_stock,quantity,is_free_shipping&category_id=d731015f-63e3-472e-9264-0a471e67a896&join=Variations.Props",
+        "gender": "unisex"
+      }
+    ]
+  },
+  "accessories": {
+    "urls": [
+      {
+        "url": "https://api.easy-orders.net/api/v1/products?limit=500&page=1&sort=position,desc&fields=id,name,thumb,price,sale_price,sale_end_date,slug,position,disable_orders_for_no_stock,quantity,is_free_shipping&category_id=5d8e6ac1-be8c-4891-9363-66ca26ccc041&join=Variations.Props",
+        "gender": "unisex"
+      }
+    ]
+  }
+}
