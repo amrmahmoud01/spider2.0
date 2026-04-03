@@ -2,28 +2,29 @@ import scrapy
 import json
 from spider20.items import SpiderItem
 import os
-
+import re
+from ..clean_text import clean_text 
 
 class SpartaApiSpider(scrapy.Spider):
     name = "sparta"
     
     # These headers are the "secret sauce" you discovered in Postman
 
-    custom_settings = {
-        "ITEM_PIPELINES": {
-            "spider20.pipelines.SpiderPipeline": 300,
-        },
-        "CONCURRENT_REQUESTS": 4,
-        "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
-        "DOWNLOAD_DELAY": 0.5,
-        "RANDOMIZE_DOWNLOAD_DELAY": True,
-        "DEFAULT_REQUEST_HEADERS": {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
-                "Accept-Language": "en-US,en;q=0.9",
-            },
-                }
+    # custom_settings = {
+    #     "ITEM_PIPELINES": {
+    #         "spider20.pipelines.SpiderPipeline": 300,
+    #     },
+    #     "CONCURRENT_REQUESTS": 4,
+    #     "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
+    #     "DOWNLOAD_DELAY": 0.5,
+    #     "RANDOMIZE_DOWNLOAD_DELAY": True,
+    #     "DEFAULT_REQUEST_HEADERS": {
+    #         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+    #             "Accept-Language": "en-US,en;q=0.9",
+    #         },
+    #             }
     
-    
+
     custom_headers = {
         'Origin': 'https://spartaeg.myeasyorders.com',
         'Referer': 'https://spartaeg.myeasyorders.com/',
@@ -64,9 +65,12 @@ class SpartaApiSpider(scrapy.Spider):
         products = data.get('data', [])
         
         for product in products:
+
+            name = product.get('name')
+            clean_name = clean_text(name)
             item = SpiderItem()
             item["imageLink"]= product.get('thumb')
-            item["name"] = product.get('name')
+            item["name"] = clean_name
             item["price"] = product.get('price')
             item["salePrice"] = product.get('sale_price')
             item["productLink"] = f"https://spartaeg.myeasyorders.com/products/{product.get('slug')}",
