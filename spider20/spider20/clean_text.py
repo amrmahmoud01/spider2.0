@@ -5,6 +5,7 @@ def clean_text(text):
         return ""
     # 1. Normalize unicode (handles combined characters like accents)
     text = unicodedata.normalize('NFKC', text)
+    text = text.replace('\u2013', '-')
     
     # 2. Keep only printable characters
     # 'C' = Control/Format/Invisible, 'Z' = Separator (we keep 'Zs' which is normal space)

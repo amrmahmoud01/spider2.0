@@ -1,0 +1,12 @@
+{
+  "women": {
+    "urls": [
+        "https://comfowear.com/collections/shop-all-women"
+    ]
+  },
+  "men": {
+    "urls": [
+      "https://comfowear.com/collections/shop-all-men"
+    ]
+  }
+}
