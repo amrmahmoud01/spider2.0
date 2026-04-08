@@ -126,10 +126,10 @@ class SpiderPipeline:
                             })
 
                             
-                    if item.get('imageLink'):
+                    if p_id and item.get('imageLink'): # This will now actually find the link
                         images_to_upsert.append({
                             "productId": p_id,
-                            "URL": item['imageLink'] # Ensure 'URL' matches your DB column name
+                            "URL": item['imageLink']
                         })
 
                 if colors_to_upsert:
