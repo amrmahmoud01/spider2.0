@@ -24,6 +24,8 @@ class ComfowearSpider(scrapy.Spider):
                 "Accept-Language": "en-US,en;q=0.9",
             },
                 }
+    
+    
     item = SpiderItem()
     def start_requests(self):
 
@@ -83,18 +85,18 @@ class ComfowearSpider(scrapy.Spider):
     
     def parse_product(self,response, gender):
 
-        
-        if not response.css('.price__sale .price-item.price-item--regular ::text').get().strip(): ##If not on sale
+        regularPriceDiv = response.css('.price__regular .price-item.price-item--regular ::text').get().strip()
+        salePriceInSaleDiv = response.css('.price__sale .price-item.price-item--sale ::text').get().strip()
+        if not regularPriceDiv==salePriceInSaleDiv: ##If not on sale
             salePrice=0
             price = re.sub(r"[^\d.]","",response.css('.price__regular .price-item.price-item--regular ::text').get().strip())
-
 
         else:
             salePrice = salePrice = re.sub(r"[^\d.]","",response.css(".price__sale .price-item.price-item--sale.price-item--last ::text").get().strip())
             price = re.sub(r"[^\d.]","",response.css(".price__sale .price-item.price-item--regular ::text").get().strip())
 
         
-        #TODO When there's a sale add the logic
+        #TODO When there's no sale add the logic
 
         item = SpiderItem()
 
