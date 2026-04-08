@@ -111,8 +111,11 @@ class SpiderPipeline:
                 # link_to_id = { "https://site.com/p1": 12345, ... }
                 link_to_id = {row.productLink: row.productId for row in result}
 
-                # --- STAGE 4: PREPARE AND INSERT COLORS ---
+                # --- STAGE 4: PREPARE AND INSERT COLORS AND IMAGES ---
                 colors_to_upsert = []
+
+                images_to_upsert = []
+
                 for item in self.items_buffer:
                     p_id = link_to_id.get(item['productLink'])
                     if p_id:
@@ -122,10 +125,24 @@ class SpiderPipeline:
                                 "color": color
                             })
 
+                            
+                    if item.get('imageLink'):
+                        images_to_upsert.append({
+                            "productId": p_id,
+                            "URL": item['imageLink'] # Ensure 'URL' matches your DB column name
+                        })
+
                 if colors_to_upsert:
                     # INSERT IGNORE handles duplicates in the colors table automatically
                     color_stmt = insert(Productcolors).values(colors_to_upsert).prefix_with("IGNORE")
                     self.session.execute(color_stmt)
+
+
+                if images_to_upsert:
+                    # We use ON DUPLICATE KEY UPDATE so we don't get 1000 copies of the same image
+                    img_stmt = insert(Productimages).values(images_to_upsert)
+                    img_upsert = img_stmt.on_duplicate_key_update(URL=img_stmt.inserted.URL)
+                    self.session.execute(img_upsert)
 
                 # --- STAGE 5: FINAL COMMIT ---
                 # This saves all 100 products and all their colors in one go
