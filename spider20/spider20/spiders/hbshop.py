@@ -2,14 +2,14 @@ import scrapy
 import re
 import json
 import os
-from ..mapping import classify_product
 from spider20.items import SpiderItem
+from scrapy.exceptions import CloseSpider
 
 # from spider20.spider20.items import SpiderItem 
 
 
-class ComfowearSpider(scrapy.Spider):
-    name = "comfowear"
+class HBSpider(scrapy.Spider):
+    name = "hbshop"
 
     custom_settings = {
         "ITEM_PIPELINES": {
@@ -24,40 +24,38 @@ class ComfowearSpider(scrapy.Spider):
                 "Accept-Language": "en-US,en;q=0.9",
             },
                 }
+
+    
     item = SpiderItem()
     def start_requests(self):
 
 
         spider_dir = os.path.dirname(os.path.abspath(__file__))
 
-        config_path = os.path.join(spider_dir, '..', 'configs', 'comfowearConfig.json')
+        config_path = os.path.join(spider_dir, '..', 'configs', 'hbConfig.json')
     
         # Normalized path to make it clean
         config_path = os.path.normpath(config_path)
 
+
         with open(config_path) as f:
-            self.config = json.load(f)
+            self.config=json.load(f)
 
-        # Iterate through the gender keys: "women", "men", "kids"
-        for gender, info in self.config.items():
-            urls = info.get("urls", [])
+        for category, info in self.config.items():
+            urls = info["urls"]
             for url in urls:
-                yield scrapy.Request(
-                    url=url,
-                    callback=self.parse,
-                    # We no longer pass "category_name" here because 
-                    # we will infer it from the product title in parse_product
-                    cb_kwargs={
-                        "gender": gender
-                    }
-                )
+                yield scrapy.Request(url = url["url"],
+                                callback=self.parse,
+                                cb_kwargs={"category_name": category,
+                                           "gender": url["gender"]}
+                                )
 
         
         
         
 
 
-    def parse(self, response, gender):
+    def parse(self, response, category_name, gender):
         products = response.css(".card-wrapper")
         for product in products:
             
@@ -66,25 +64,26 @@ class ComfowearSpider(scrapy.Spider):
                 url = link,
                 callback = self.parse_product,
                 cb_kwargs={
+                    "category_name": category_name,
                     "gender": gender
                 }
                 )
-        next_page = response.css("a[aria-label='Next page'] ::attr(href)").get()
+        next_page = response.css("a[aria-label='Next page']::attr(href)").get()
         if next_page:
             yield scrapy.Request(
                 url = response.urljoin(next_page), 
                 callback=self.parse,
                 cb_kwargs={
-                    # "category_name": category_name,
+                    "category_name": category_name,
                     "gender": gender
                 })
             
 
     
-    def parse_product(self,response, gender):
+    def parse_product(self,response, category_name, gender):
 
-        
-        if not response.css('.price__sale .price-item.price-item--regular ::text').get().strip(): ##If not on sale
+        checkRegularPriceInSaleDiv = response.css('.price__sale .price-item.price-item--regular ::text').get().strip()
+        if checkRegularPriceInSaleDiv == '' or checkRegularPriceInSaleDiv=='0.00 EGP':
             salePrice=0
             price = re.sub(r"[^\d.]","",response.css('.price__regular .price-item.price-item--regular ::text').get().strip())
 
@@ -93,19 +92,17 @@ class ComfowearSpider(scrapy.Spider):
             salePrice = salePrice = re.sub(r"[^\d.]","",response.css(".price__sale .price-item.price-item--sale.price-item--last ::text").get().strip())
             price = re.sub(r"[^\d.]","",response.css(".price__sale .price-item.price-item--regular ::text").get().strip())
 
-        
-        #TODO When there's a sale add the logic
+
 
         item = SpiderItem()
 
-
-        item["imageLink"]= "https:" + response.css(".image-magnify-lightbox ::attr(src)").get()
+        item["imageLink"]= "https:" + response.css(".image-magnify-hover::attr(src)").get()
         item["name"] = response.css(".product__title h1::text").get().strip()
-        item["price"] = re.sub(r"[^\d.]", "", response.css(".price-item.price-item--regular ::text").getall()[-1].strip()) 
+        item["price"] = price
         item["salePrice"] = salePrice
         item["productLink"] = response.url
         item["gender"] = gender
-        item["type"] = classify_product(item["name"])
-        item["storeId"] = 1007
-
+        item["type"] = category_name
+        item["storeId"] = 1008
+    
         yield item

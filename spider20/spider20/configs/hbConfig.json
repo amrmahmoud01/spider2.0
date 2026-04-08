@@ -1,0 +1,94 @@
+{
+  "t-shirt": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/shirts", "gender": "women" }
+    ]
+  },
+
+  "sweatshirt": {
+    "urls": [
+    ]
+  },
+
+  "sweater": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/pullovers-and-sweater", "gender": "women" },
+      { "url": "https://hbshop.co/collections/cardigans", "gender": "women" }
+    ]
+  },
+
+  "coat": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/jackets", "gender": "women" },
+      { "url": "https://hbshop.co/collections/coats", "gender": "women" },
+      { "url": "https://hbshop.co/collections/vests", "gender": "women" },
+      { "url": "https://hbshop.co/collections/ponchos", "gender": "women" },
+      { "url": "https://hbshop.co/collections/capes", "gender": "women" }
+    ]
+  },
+
+  "pants": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/pants", "gender": "women" }
+    ]
+  },
+
+  "jeans": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/jeans", "gender": "women" }
+    ]
+  },
+
+  "leggings": {
+    "urls": []
+  },
+
+  "shorts": {
+    "urls": []
+  },
+
+  "dress": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/dresses", "gender": "women" },
+      { "url": "https://hbshop.co/collections/evening-dresses", "gender": "women" }
+    ]
+  },
+
+  "skirt": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/skirts", "gender": "women" }
+    ]
+  },
+
+  "pyjama": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/sets", "gender": "women" }
+    ]
+  },
+
+  "underwear": {
+    "urls": []
+  },
+
+  "accessories": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/satin-scarves", "gender": "women" },
+      { "url": "https://hbshop.co/collections/shoulder-bags", "gender": "women" },
+      { "url": "https://hbshop.co/collections/cross-bags", "gender": "women" }
+    ]
+  },
+
+  "shoes": {
+    "urls": []
+  },
+
+  "sportswear": {
+    "urls": []
+  },
+
+  "hoodie": {
+    "urls": [
+      { "url": "https://hbshop.co/collections/sweatshirts-hoodies", "gender": "women" }
+    ]
+  }
+}
