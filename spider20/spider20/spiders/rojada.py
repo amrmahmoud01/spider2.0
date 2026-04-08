@@ -107,7 +107,7 @@ class OrSpider(scrapy.Spider):
 
         item = SpiderItem()
 
-        item["imageLink"]= "https:" + response.css(".woocommerce-product-gallery__image img::attr(data-src)").get() 
+        item["imageLink"]= response.css(".woocommerce-product-gallery__image img::attr(data-src)").get() 
         item["name"] = response.css(".product-title ::text").get().strip()
         item["price"] = price
         item["salePrice"] = salePrice
