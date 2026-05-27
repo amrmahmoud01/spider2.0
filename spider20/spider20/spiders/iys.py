@@ -11,6 +11,7 @@ class IysSpider(scrapy.Spider):
     name = "iys"
 
     custom_settings = {
+        "REDIRECT_ENABLED" : False,
         "ITEM_PIPELINES": {
             "spider20.pipelines.SpiderPipeline": 300,
         },
@@ -44,7 +45,8 @@ class IysSpider(scrapy.Spider):
             for url in urls:
                 yield scrapy.Request(url = url,
                                 callback=self.parse,
-                                cb_kwargs={"category_name": category}
+                                cb_kwargs={"category_name": category},
+                                meta={'dont_redirect': True}
                                 )
 
         
@@ -62,7 +64,8 @@ class IysSpider(scrapy.Spider):
                 callback = self.parse_product,
                 cb_kwargs={
                     "category_name": category_name
-                }
+                },
+                meta={'dont_redirect': True}
                 )
         next_page = response.css(".pagination-item__navigation-button--type-next::attr(href)").get()
         if next_page:
@@ -71,7 +74,9 @@ class IysSpider(scrapy.Spider):
                 callback=self.parse,
                 cb_kwargs={
                     "category_name": category_name
-                })
+                },
+                meta={'dont_redirect': True}
+                )
             
 
     
