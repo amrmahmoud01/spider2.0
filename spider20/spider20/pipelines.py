@@ -10,7 +10,7 @@ from sqlalchemy.dialects.mysql import insert
 from scrapy.pipelines.images import ImagesPipeline
 from spider20.models.models import Product, Productimages, Productcolors
 from sqlalchemy import select
-
+from datetime import date
 class SpiderPipeline:
     def __init__(self, db_url, batch_size=100):
 
@@ -82,6 +82,7 @@ class SpiderPipeline:
                     d = dict(item) # Create a copy to preserve original data for the color stage
                     d.pop('colors', None)
                     d.pop('imageLink', None)
+                    d['lastSeenAt'] = date.today()
                     product_data.append(d)
 
                 # --- STAGE 2: THE PRODUCT UPSERT ---
@@ -94,6 +95,7 @@ class SpiderPipeline:
                     type=stmt.inserted.type,
                     gender=stmt.inserted.gender,
                     storeId=stmt.inserted.storeId
+                    lastSeenAt=func.now()
                 )
                 
                 self.session.execute(upsert_stmt)

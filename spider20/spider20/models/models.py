@@ -2,6 +2,9 @@ from typing import List, Optional
 from sqlalchemy import DECIMAL, ForeignKeyConstraint, Index, Integer, String
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 import decimal
+from sqlalchemy import Date
+import datetime
+
 
 
 class Base(DeclarativeBase):
@@ -51,6 +54,7 @@ class Product(Base):
     storeId: Mapped[Optional[int]] = mapped_column(Integer)
     gender: Mapped[Optional[str]] = mapped_column(String(90))
     salePrice: Mapped[Optional[decimal.Decimal]] = mapped_column(DECIMAL(10, 2))
+    lastSeenAt: Mapped[Optional[datetime.date]] = mapped_column(Date)
 
     # Many-to-one: Product → Store
     store: Mapped["Store"] = relationship(
