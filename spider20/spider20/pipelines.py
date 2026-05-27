@@ -4,6 +4,7 @@ from itemadapter import ItemAdapter
 from dotenv import load_dotenv
 import os
 from sqlalchemy import create_engine, text
+from sqlalchemy.sql import func
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.dialects.mysql import insert
@@ -94,7 +95,7 @@ class SpiderPipeline:
                     salePrice=stmt.inserted.salePrice,
                     type=stmt.inserted.type,
                     gender=stmt.inserted.gender,
-                    storeId=stmt.inserted.storeId
+                    storeId=stmt.inserted.storeId,
                     lastSeenAt=func.now()
                 )
                 
