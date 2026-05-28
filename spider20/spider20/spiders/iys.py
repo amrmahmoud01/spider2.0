@@ -11,7 +11,6 @@ class IysSpider(scrapy.Spider):
     name = "iys"
 
     custom_settings = {
-        "REDIRECT_ENABLED" : False,
         "ITEM_PIPELINES": {
             "spider20.pipelines.SpiderPipeline": 300,
         },
