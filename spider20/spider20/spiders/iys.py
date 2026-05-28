@@ -54,6 +54,11 @@ class IysSpider(scrapy.Spider):
 
 
     def parse(self, response, category_name):
+        
+        print("Requested:", response.request.url)
+        print("Landed on:", response.url)
+        print("Status:", response.status)
+
         products = response.css("product-item")
         for product in products:
             
