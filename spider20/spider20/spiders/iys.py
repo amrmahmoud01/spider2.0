@@ -21,7 +21,7 @@ class IysSpider(scrapy.Spider):
         "RANDOMIZE_DOWNLOAD_DELAY": True,
         "DEFAULT_REQUEST_HEADERS": {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
-                "Accept-Language": "en-US,en;q=0.9",
+            "Accept-Language": "en-US,en;q=0.9",
             },
                 }
     item = SpiderItem()
@@ -46,7 +46,7 @@ class IysSpider(scrapy.Spider):
                 yield scrapy.Request(url = url,
                                 callback=self.parse,
                                 cb_kwargs={"category_name": category},
-                                meta={'dont_redirect': True}
+                                cookies={'country': 'EG', 'locale': 'ar_EG', 'currency': 'EGP'}
                                 )
 
         
@@ -65,7 +65,7 @@ class IysSpider(scrapy.Spider):
                 cb_kwargs={
                     "category_name": category_name
                 },
-                meta={'dont_redirect': True}
+                cookies={'country': 'EG', 'locale': 'ar_EG', 'currency': 'EGP'}
                 )
         next_page = response.css(".pagination-item__navigation-button--type-next::attr(href)").get()
         if next_page:
@@ -75,7 +75,8 @@ class IysSpider(scrapy.Spider):
                 cb_kwargs={
                     "category_name": category_name
                 },
-                meta={'dont_redirect': True}
+                cookies={'country': 'EG', 'locale': 'ar_EG', 'currency': 'EGP'}
+
                 )
             
 
