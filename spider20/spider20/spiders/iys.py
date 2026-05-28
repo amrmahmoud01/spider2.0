@@ -33,6 +33,9 @@ class IysSpider(scrapy.Spider):
         "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
         "DOWNLOAD_DELAY": 1.5,
         "RANDOMIZE_DOWNLOAD_DELAY": True,
+        "COOKIES_ENABLED": True,
+        "COOKIES_DEBUG": True,
+
     }
 
     item = SpiderItem()
@@ -52,7 +55,7 @@ class IysSpider(scrapy.Spider):
                     url=url,
                     callback=self.parse,
                     cb_kwargs={"category_name": category},
-                    cookies={'localization': 'EG'},
+                    # cookies={'localization': 'EG'},
                 )
 
     def parse(self, response, category_name):
@@ -68,7 +71,7 @@ class IysSpider(scrapy.Spider):
                 url=link,
                 callback=self.parse_product,
                 cb_kwargs={"category_name": category_name},
-                cookies={'localization': 'EG'},
+                # cookies={'localization': 'EG'},
             )
 
         next_page = response.css(".pagination-item__navigation-button--type-next::attr(href)").get()
@@ -77,7 +80,7 @@ class IysSpider(scrapy.Spider):
                 url=response.urljoin(next_page),
                 callback=self.parse,
                 cb_kwargs={"category_name": category_name},
-                cookies={'localization': 'EG'},
+                # cookies={'localization': 'EG'},
             )
 
     def parse_product(self, response, category_name):
