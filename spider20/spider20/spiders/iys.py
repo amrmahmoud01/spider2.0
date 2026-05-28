@@ -11,8 +11,8 @@ class IysSpider(scrapy.Spider):
     custom_settings = {
         "COOKIES_ENABLED": True,
         "DOWNLOAD_HANDLERS": {
-            "http": "scrapy.core.downloader.handlers.http.HTTPDownloadHandler",
-            "https": "scrapy.core.downloader.handlers.https.HTTPSDownloadHandler",
+            "http": "scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler",
+            "https": "scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler",
         },
         "DEFAULT_REQUEST_HEADERS": {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
