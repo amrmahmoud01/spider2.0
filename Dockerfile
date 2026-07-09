@@ -19,5 +19,5 @@ WORKDIR /app/spider20
 
 EXPOSE 6800
 
-# 4. Wipe local caches in this specific folder and run Scrapyd
-CMD ["sh", "-c", "rm -rf dbs eggs && scrapyd --pidfile= --http_port=6800"]
+# 4. Wipe local caches and run Scrapyd cleanly without the invalid flag
+CMD ["sh", "-c", "rm -rf dbs eggs && scrapyd --pidfile="]
