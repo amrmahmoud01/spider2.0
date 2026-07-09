@@ -14,10 +14,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 2. Copy the rest of the project files
 COPY . .
 
-# 3. Dive into the folder where scrapy.cfg actually lives
+# 3. Create a dedicated healthcheck script file
+RUN echo "import urllib.request; urllib.request.urlopen('http://localhost:6800/daemonstatus.json')" > /app/healthcheck.py
+
+# 4. Dive into the folder where scrapy.cfg actually lives
 WORKDIR /app/spider20
 
 EXPOSE 6800
 
-# 4. Wipe local caches and run Scrapyd cleanly without the invalid flag
+# 5. Wipe local caches and run Scrapyd cleanly
 CMD ["sh", "-c", "rm -rf dbs eggs && scrapyd --pidfile="]
