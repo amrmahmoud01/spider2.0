@@ -17,7 +17,8 @@ DB_HOST = os.getenv('DB_HOST')
 DB_USER = os.getenv('DB_USER')
 DB_PASS = os.getenv('DB_PASS')
 DB_NAME = os.getenv('DB_NAME')
-# SCRAPEOPS_API_KEY = os.getenv('SCRAPEOPS_API_KEY')
+
+SCRAPEOPS_API_KEY = os.getenv('SCRAPEOPS_API_KEY')
 
 
 BOT_NAME = "spider20"
@@ -25,9 +26,9 @@ BOT_NAME = "spider20"
 SPIDER_MODULES = ["spider20.spiders"]
 NEWSPIDER_MODULE = "spider20.spiders"
 
-# EXTENSIONS = {
-#     'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500,
-# }
+EXTENSIONS = {
+    'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500,
+}
 
 # ZYTE_API_KEY = os.getenv('ZYTE_API_KEY')
 
@@ -85,9 +86,12 @@ DOWNLOAD_DELAY = 1
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+
+DOWNLOADER_MIDDLEWARES = {
 #    "spider20.middlewares.Spider20DownloaderMiddleware": 543,
-#}
+    'scrapeops_scrapy.middleware.retry.RetryMiddleware': 550,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
