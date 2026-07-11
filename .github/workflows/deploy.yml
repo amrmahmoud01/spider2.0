@@ -1,0 +1,31 @@
+name: Deploy Scrapy Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          pip install scrapyd-client
+
+      - name: Deploy to Server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          # This command tells scrapyd-deploy to tunnel through SSH
+          # We use the ProxyCommand to tunnel the HTTP request over SSH
+          scrapyd-deploy -p spider20 --url http://127.0.0.1:6800
+        shell: bash
+        # Note: You can use the 'appleboy/ssh-action' for more complex setups

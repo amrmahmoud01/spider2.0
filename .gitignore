@@ -1,3 +1,6 @@
 .env
 *.pyc
 *.cpython
+build/
+project.egg-info/
+setup.py
