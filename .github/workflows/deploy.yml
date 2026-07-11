@@ -18,7 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install scrapyd-client
+          pip install setuptools wheel
           
       - name: Deploy to Server
         env:
@@ -30,17 +30,19 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           
-          # 2. Generate the config file the tool expects
-          echo "[settings]" > scrapy.cfg
-          echo "default = spider20.settings" >> scrapy.cfg
-          echo "[deploy]" >> scrapy.cfg
-          echo "url = http://127.0.0.1:6800/" >> scrapy.cfg
-          echo "project = spider20" >> scrapy.cfg
-          
-          # 3. Establish the tunnel in the background
-          # -o StrictHostKeyChecking=no avoids interactive prompts
-          # -f runs in background, -N keeps tunnel open
+          # 2. Establish the tunnel in the background
           ssh -o StrictHostKeyChecking=no -f -N -L 6800:127.0.0.1:6800 root@$SERVER_IP -i ~/.ssh/id_rsa
           
-          # 4. Deploy
-          scrapyd-deploy spider20
+          # 3. Create a minimal setup.py if it doesn't exist
+          if [ ! -f setup.py ]; then
+            echo "from setuptools import setup, find_packages" > setup.py
+            echo "setup(name='spider20', version='0.1', packages=find_packages(), entry_points={'scrapy': ['settings = spider20.settings']})" >> setup.py
+          fi
+          
+          # 4. Build the egg
+          python3 setup.py bdist_egg
+          
+          # 5. Deploy via CURL
+          # We look for the generated egg in the dist/ folder
+          EGG_FILE=$(ls dist/*.egg | head -n 1)
+          curl http://127.0.0.1:6800/addversion.json -F project=spider20 -F version=1 -F egg=@$EGG_FILE
