@@ -23,4 +23,4 @@ WORKDIR /app/spider20
 EXPOSE 6800
 
 # 5. Wipe local caches and run Scrapyd cleanly
-CMD ["scrapyd", "--pidfile", "/tmp/scrapyd.pid"]
+CMD ["scrapyd", "--pidfile", "/tmp/scrapyd.pid", "-o", "bind_address=0.0.0.0"]
