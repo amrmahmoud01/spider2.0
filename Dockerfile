@@ -23,4 +23,4 @@ WORKDIR /app/spider20
 EXPOSE 6800
 
 # 5. Wipe local caches and run Scrapyd cleanly
-CMD ["sh", "-c", "rm -rf dbs eggs && scrapyd --pidfile="]
+CMD ["scrapyd", "--pidfile", "/tmp/scrapyd.pid"]
