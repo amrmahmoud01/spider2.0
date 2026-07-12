@@ -30,19 +30,22 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-          # 2. Establish the tunnel in the background
-          ssh -o StrictHostKeyChecking=no -f -N -L 6800:10.0.1.13:6800 root@$SERVER_IP -i ~/.ssh/id_rsa
+          # 2. Dynamically look up the container's internal IP address on the server
+          CONTAINER_IP=$(ssh -o StrictHostKeyChecking=no root@$SERVER_IP -i ~/.ssh/id_rsa "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \$(docker ps -q --filter name=spider20)")
+          echo "Connecting to container IP: $CONTAINER_IP"
 
-          # 3. Create a minimal setup.py if it doesn't exist
+          # 3. Establish the tunnel in the background using the dynamic IP
+          ssh -o StrictHostKeyChecking=no -f -N -L 6800:$CONTAINER_IP:6800 root@$SERVER_IP -i ~/.ssh/id_rsa
+
+          # 4. Create a minimal setup.py if it doesn't exist
           if [ ! -f setup.py ]; then
             echo "from setuptools import setup, find_packages" > setup.py
             echo "setup(name='spider20', version='0.1', packages=find_packages(), entry_points={'scrapy': ['settings = spider20.settings']})" >> setup.py
           fi
 
-          # 4. Build the egg
+          # 5. Build the egg
           python3 setup.py bdist_egg
 
-          # 5. Deploy via CURL
-          # We look for the generated egg in the dist/ folder
+          # 6. Deploy via CURL to the local end of the tunnel
           EGG_FILE=$(ls dist/*.egg | head -n 1)
           curl http://127.0.0.1:6800/addversion.json -F project=spider20 -F version=1 -F egg=@$EGG_FILE
