@@ -20,7 +20,12 @@ RUN echo "import urllib.request; urllib.request.urlopen('http://localhost:6800/d
 # 4. Dive into the folder where scrapy.cfg actually lives
 WORKDIR /app/spider20
 
+# ... (rest of your Dockerfile remains the same) ...
+
 EXPOSE 6800
 
-# 5. Wipe local caches and run Scrapyd cleanly
-CMD ["scrapyd", "--pidfile", "/tmp/scrapyd.pid", "-o", "bind_address=0.0.0.0"]
+# Set the binding environment variable so it listens on all interfaces
+ENV SCRAPYD_BIND_ADDRESS=0.0.0.0
+
+# Keep the CMD clean and simple
+CMD ["scrapyd", "--pidfile", "/tmp/scrapyd.pid"]

@@ -35,7 +35,7 @@ class SpartaApiSpider(scrapy.Spider):
     def start_requests(self):
         # Use the API URLs from your config
         spider_dir = os.path.dirname(os.path.abspath(__file__))
-
+         ## PEEPEEPOOPOO
         config_path = os.path.join(spider_dir, '..', 'configs', 'spartaConfig.json')
     
         # Normalized path to make it clean
