@@ -22,29 +22,19 @@ jobs:
 
       - name: Deploy to Server
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_IP: ${{ secrets.SERVER_IP }}
+          SCRAPYD_USERNAME: ${{ secrets.SCRAPYD_USERNAME }}
+          SCRAPYD_PASSWORD: ${{ secrets.SCRAPYD_PASSWORD }}
         run: |
-          # 1. Setup SSH Identity
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-
-          # 2. Add server to known hosts to prevent SSH prompts hanging the runner
-          ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
-
-          # 3. Establish the tunnel to the host's 127.0.0.1:6800 (which Coolify routes to Scrapyd)
-          ssh -f -N -L 6800:127.0.0.1:6800 root@$SERVER_IP -i ~/.ssh/id_rsa
-
-          # 4. Create a minimal setup.py if it doesn't exist
+          # 1. Create a minimal setup.py if it doesn't exist
           if [ ! -f setup.py ]; then
             echo "from setuptools import setup, find_packages" > setup.py
             echo "setup(name='spider20', version='0.1', packages=find_packages(), entry_points={'scrapy': ['settings = spider20.settings']})" >> setup.py
           fi
 
-          # 5. Build the egg
+          # 2. Build the egg
           python3 setup.py bdist_egg
 
-          # 6. Deploy via CURL to the local end of the tunnel
+          # 3. Deploy via CURL directly to the open authenticated port
           EGG_FILE=$(ls dist/*.egg | head -n 1)
-          curl http://localhost:6800/addversion.json -F project=spider20 -F version=${{ github.sha }} -F egg=@$EGG_FILE
+          curl -u "$SCRAPYD_USERNAME:$SCRAPYD_PASSWORD" http://$SERVER_IP:6800/addversion.json -F project=spider20 -F version=${{ github.sha }} -F egg=@$EGG_FILE
