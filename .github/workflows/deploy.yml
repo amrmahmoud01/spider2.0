@@ -30,12 +30,11 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-          # 2. Dynamically look up the container's internal IP address on the server
-          CONTAINER_IP=$(ssh -o StrictHostKeyChecking=no root@$SERVER_IP -i ~/.ssh/id_rsa "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \$(docker ps -q --filter name=spider20)")
-          echo "Connecting to container IP: $CONTAINER_IP"
+          # 2. Add server to known hosts to prevent SSH prompts hanging the runner
+          ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
 
-          # 3. Establish the tunnel in the background using the dynamic IP
-          ssh -o StrictHostKeyChecking=no -f -N -L 6800:$CONTAINER_IP:6800 root@$SERVER_IP -i ~/.ssh/id_rsa
+          # 3. Establish the tunnel to the host's 127.0.0.1:6800 (which Coolify routes to Scrapyd)
+          ssh -f -N -L 6800:127.0.0.1:6800 root@$SERVER_IP -i ~/.ssh/id_rsa
 
           # 4. Create a minimal setup.py if it doesn't exist
           if [ ! -f setup.py ]; then
@@ -48,4 +47,4 @@ jobs:
 
           # 6. Deploy via CURL to the local end of the tunnel
           EGG_FILE=$(ls dist/*.egg | head -n 1)
-          curl http://127.0.0.1:6800/addversion.json -F project=spider20 -F version=1 -F egg=@$EGG_FILE
+          curl http://localhost:6800/addversion.json -F project=spider20 -F version=${{ github.sha }} -F egg=@$EGG_FILE
